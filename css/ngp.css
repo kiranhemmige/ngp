@@ -1,0 +1,53 @@
+img.l{
+    cursor: pointer;
+}
+img.b{
+	cursor: pointer;
+}
+#puzzleContainer{
+	background-color:#fff;
+}
+#ngpTable td{
+	cursor: default;
+	-moz-user-select: none;
+}
+#ngpTable{
+	border:2px solid #000;
+	border-collapse: collapse;
+}
+.t00{
+	border:1px solid #000;
+	background-color:#FFFFFF;
+}
+.t10{
+	border:1px solid #000;
+	border-top: 2px solid #000;
+	background-color:#FFFFFF;
+}
+.t01{
+	border:1px solid #000;
+	border-left: 2px solid #000;
+	background-color:#FFFFFF;
+}
+.t11{
+	border:1px solid #000;
+	border-top: 2px solid #000;
+	border-left: 2px solid #000;
+	background-color:#FFFFFF;
+}
+
+.t00_on{
+	border:1px solid #000;
+	background-color:#CCCCCC;
+}
+.t10_on{
+	border:1px solid #000;
+	border-top: 2px solid #000;
+	background-color:#CCCCCC;
+}
+.t01_on{
+	border:1px solid #000;
+	border-left: 2px solid #000;
+	background-color:#CCCCCC;
+}
+

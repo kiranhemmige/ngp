@@ -1,0 +1,129 @@
+*{
+	font-family: Tahoma;
+	font-size: 11px;
+}
+body{
+	margin: 10px;
+	background-color:#fff;
+}
+body.collapsed {
+    margin-left: 0;
+}
+.done{
+	color:#F60;
+	font-weight:bold;
+}
+.none{
+	color:#000;
+	font-weight:bold;
+}
+
+.fleft{
+	float: left;
+}
+.fright{
+	float: right;
+}
+.clear{
+  clear: both;
+}
+#Side{
+	width: 200px;
+	border-right: 1px solid #ccc;
+    position: relative;
+}
+.collapsed #Side {
+    display:none;
+}
+
+#MainContainer{
+    position: relative;
+	padding: 10px;
+	text-align: center;
+}
+
+h1{
+	font-family: Times new roman;
+	color:#36c;
+	font-size: 25px;
+	font-weight: normal;
+}
+.content{
+	padding-right: 10px;
+}
+a{
+	color: #36c;
+}
+a.on{
+	color: #000;
+	font-weight: bold;
+}
+a img { border: none; }
+.brd{
+	border: 1px solid #36c;
+	padding: 10px;
+}
+.b{
+border: 1px solid #36c;
+}
+
+.onlyprint{
+	display: none;
+}
+.button{
+	font-weight: bold;
+	border: 1px solid #36c;
+}
+.info{
+	font-weight: bold;
+	color:#36c;
+	font-size: 13px;
+}
+
+.success, .succ{
+	font-weight: bold;
+	color:#090;
+	font-size: 13px;
+}
+.err{
+	font-weight: bold;
+	color:#F60;
+	font-size: 13px;
+}
+.red{
+	color:#F60;
+}
+li{
+	line-height: 15px;
+}
+
+.q{
+	font-family: Times new roman;
+	color:#c33;
+	font-size: 25px;
+	font-weight: normal;
+}
+.a{
+	font-family: Times new roman;
+	color:#090;
+	font-size: 25px;
+	font-weight: normal;
+}
+.question{
+	font-weight:bold;
+}
+.clock{
+	font-family: Times new roman;
+	font-size: 17px;
+	height: 26px;
+	line-height:17px;
+	width: 100px;
+	text-align: center;
+	color:#36c;
+	border:1px solid #FFF;
+
+}
+form{
+	padding:0;
+	margin:0;
+}

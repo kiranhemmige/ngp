@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<title>Margonon line solver</title>
+
+<head>
+<script>
+function printResult(buffer)
+{
+    document.getElementById('result').innerHTML = buffer;
+}
+
+function tryPlace(size, clue, start, pos, buffer, lastClue)
+{
+	if (pos + clue > size) {
+        return 0;
+    }
+    var i;
+    for (i = start; i < pos; ++i) {
+         if (buffer[i] == 'B') return false;
+         buffer[i] = 'W';
+    }
+    for (i = pos; i < pos + clue; ++i) {
+        if (buffer[i] == 'W') return false;
+        buffer[i] = 'B';
+    }
+    if (i != size) {
+    	   if (buffer[i] == 'B') return false;
+        buffer[i] = 'W';
+    }
+    if (lastClue) {
+    	    for (i = pos + clue; i < size; ++i) {
+        	    if (buffer[i] == 'B') return false;
+             buffer[i] = 'W';
+         }
+    }
+    return true;
+}
+
+function solveLineRecurse(size, pos, clues, buffer, candidates, clueNo) {
+    var clue = clues[clueNo];
+    for (var i = pos; i <= size - clue; ++i) {
+    	    var tmpBuffer = buffer.slice();
+        var lastClue = false;
+        if (clueNo == clues.length - 1) {
+        	    lastClue = true;
+        }
+        if (tryPlace(size, clue, pos, i, tmpBuffer, lastClue)) {
+            if (lastClue) {
+                candidates.push(tmpBuffer.slice());
+            }
+            else {
+                solveLineRecurse(size, i + clue + 1, clues, tmpBuffer, candidates, clueNo + 1);
+            }
+        }
+    }
+}
+
+function mergeResult(size, result, buffer)
+{
+	for (var i = 0; i < size; ++i) {
+    	    if (result[i] != buffer[i]) {
+        	    result[i] = 'U';
+         }
+    }
+}
+
+function solveOneLine()
+{
+    var size = document.getElementById('puzzleSize').value;
+    var cluesStr = document.getElementById('clues').value;
+    var tmp = cluesStr.split(',');
+    var clues = new Array();
+    for (var t of tmp) {
+        clues.push(parseInt(t, 10));
+    }
+    tmp = document.getElementById('cells').value;
+    var cells = new Array();
+    for (var i = 0; i < size; ++i) {
+        cells.push(tmp.charAt(i));
+    }
+    var candidates = new Array();
+    solveLineRecurse(size, 0, clues, cells, candidates, 0);
+    if (candidates.length == 0) {
+    	    printResult("No candidates match!");
+        return;
+    }
+    var result = candidates[0].slice();
+    for (var c of candidates) {
+    	    mergeResult(size, result, c);
+    }
+    printResult(result);
+}
+
+function getInitialValue()
+{
+	var size = parseInt(document.getElementById('puzzleSize').value, 10);
+	document.getElementById('cells').value = Array(size + 1).join('U');
+}
+
+</script>
+</head>
+
+<body>
+    <label>Puzzle Size: </label>
+    <input type="text" id="puzzleSize" value="15" onchange="getInitialValue()"> <br>
+    <label>Clues: </label>
+    <input type="text" id="clues" value="1,3,4,2"> <br>
+    <label>Initial values: </label>
+    <input type="text" id="cells" value=""> <br>
+    <script>
+    getInitialValue();
+    </script>
+    <input type=button value="Solve" onClick="solveOneLine()"><br>
+    <label>Result: </label>
+    <label id="result"></label>
+</body>
+
+</html>
